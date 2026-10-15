@@ -16,7 +16,6 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  profile,
   targets,
   activeTab,
   customFoodsCount,
@@ -33,9 +32,6 @@ export const Header: React.FC<HeaderProps> = ({
           <div>
             <h1 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
               NutriPlan AI
-              <span className="text-[11px] font-bold uppercase px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-full">
-                {profile.weight}kg • {profile.height}cm • Recomposición
-              </span>
             </h1>
             <p className="text-xs text-slate-500 hidden sm:block">
               Mifflin-St Jeor + Agente Nutricional Gemini + API OpenFoodFacts
