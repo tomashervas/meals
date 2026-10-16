@@ -601,30 +601,32 @@ export default function App() {
       {/* CONTENIDO PRINCIPAL */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 pt-6 space-y-8">
         {/* DASHBOARD SUPERIOR SIEMPRE VISIBLE */}
-        <Dashboard
-          profile={profile}
-          targets={targets}
-          dailyTotals={mealTotals.daily}
-          onOpenProfile={() => setIsProfileModalOpen(true)}
-        />
 
         {/* PESTAÑA 1: REGISTRO DIARIO DE COMIDAS */}
         {activeTab === "tracker" && (
-          <DailyTrackerTab
-            meals={meals}
-            mealCategories={MEAL_CATEGORIES}
-            targets={targets}
-            mealTotals={mealTotals}
-            onOpenAddModal={openAddFoodModal}
-            onUpdateGrams={handleUpdateMealItemGrams}
-            onRemoveItem={handleRemoveMealItem}
-            onRestoreSampleDay={() => {
-              setMeals(SAMPLE_DAY_MEALS);
-              showToast("Día de ejemplo cargado");
-            }}
-            onOpenConfirmClear={() => setConfirmClearModal(true)}
-            onGoToAiDishes={() => setActiveTab("ai-dishes")}
-          />
+          <>
+            <Dashboard
+              profile={profile}
+              targets={targets}
+              dailyTotals={mealTotals.daily}
+              onOpenProfile={() => setIsProfileModalOpen(true)}
+            />
+            <DailyTrackerTab
+              meals={meals}
+              mealCategories={MEAL_CATEGORIES}
+              targets={targets}
+              mealTotals={mealTotals}
+              onOpenAddModal={openAddFoodModal}
+              onUpdateGrams={handleUpdateMealItemGrams}
+              onRemoveItem={handleRemoveMealItem}
+              onRestoreSampleDay={() => {
+                setMeals(SAMPLE_DAY_MEALS);
+                showToast("Día de ejemplo cargado");
+              }}
+              onOpenConfirmClear={() => setConfirmClearModal(true)}
+              onGoToAiDishes={() => setActiveTab("ai-dishes")}
+            />
+          </>
         )}
 
         {/* PESTAÑA 2: ASISTENTE IA DE PLATOS HABITUALES (PERMANENTES) */}

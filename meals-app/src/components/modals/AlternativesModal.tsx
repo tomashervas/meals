@@ -34,36 +34,46 @@ export const AlternativesModal: React.FC<AlternativesModalProps> = ({
   const mealName = selectedSlot.mealType === 'lunch' ? 'Comida' : 'Cena';
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden my-8">
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-start sm:items-center justify-center p-2 sm:p-4 overflow-y-auto"
+    >
+      <div className="bg-white rounded-2xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden my-auto max-h-[92dvh] sm:max-h-[88vh] flex flex-col">
         <div
-          className={`px-6 py-4 text-white flex items-center justify-between ${
+          className={`px-4 py-3 sm:px-6 sm:py-4 text-white flex items-center justify-between shrink-0 sticky top-0 z-20 ${
             altMode === 'budget' ? 'bg-emerald-800' : 'bg-indigo-900'
           }`}
         >
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 min-w-0 pr-2">
             {altMode === 'budget' ? (
-              <Coins className="w-5 h-5 text-amber-300" />
+              <Coins className="w-5 h-5 text-amber-300 shrink-0" />
             ) : (
-              <ArrowLeftRight className="w-5 h-5 text-indigo-300" />
+              <ArrowLeftRight className="w-5 h-5 text-indigo-300 shrink-0" />
             )}
-            <div>
-              <span className="text-[11px] uppercase tracking-wider opacity-80 block font-bold">
+            <div className="min-w-0">
+              <span className="text-[11px] uppercase tracking-wider opacity-80 block font-bold truncate">
                 {currentDay} • {mealName}
               </span>
-              <h3 className="font-bold text-base">
+              <h3 className="font-bold text-sm sm:text-base truncate">
                 {altMode === 'budget'
-                  ? 'Alternativas Económicas (Ahorro Cesta Compra)'
+                  ? 'Alternativas Económicas (Ahorro)'
                   : 'Alternativas Equivalentes en Macros'}
               </h3>
             </div>
           </div>
-          <button onClick={onClose} className="text-white/70 hover:text-white p-1">
-            <X className="w-5 h-5" />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Cerrar modal"
+            className="text-white/70 hover:text-white p-2 rounded-xl hover:bg-white/10 transition cursor-pointer shrink-0"
+          >
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
-        <div className="p-6 space-y-4">
+        <div className="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
           <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
             <span className="text-slate-500 block">Plato actual a sustituir:</span>
             <strong className="text-slate-900 text-sm">{selectedSlot.dish.name}</strong>
@@ -105,7 +115,7 @@ export const AlternativesModal: React.FC<AlternativesModalProps> = ({
               </p>
             </div>
           ) : (
-            <div className="space-y-3 max-h-96 overflow-y-auto">
+            <div className="space-y-3">
               {altSuggestions.map((alt, i) => (
                 <div
                   key={i}

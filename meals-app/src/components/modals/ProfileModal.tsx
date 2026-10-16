@@ -29,19 +29,29 @@ export const ProfileModal: React.FC<ProfileModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-slate-200 overflow-hidden my-8">
-        <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <Activity className="w-5 h-5 text-emerald-400" />
-            <h3 className="font-bold text-lg">Configuración Biométrica y 4 Modos</h3>
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-start sm:items-center justify-center p-2 sm:p-4 overflow-y-auto"
+    >
+      <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-slate-200 overflow-hidden my-auto max-h-[92dvh] sm:max-h-[88vh] flex flex-col">
+        <div className="px-4 py-3 sm:px-6 sm:py-4 bg-slate-900 text-white flex items-center justify-between shrink-0 sticky top-0 z-20">
+          <div className="flex items-center gap-2.5 min-w-0 pr-2">
+            <Activity className="w-5 h-5 text-emerald-400 shrink-0" />
+            <h3 className="font-bold text-base sm:text-lg truncate">Configuración Biométrica y 4 Modos</h3>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white p-1 rounded-lg">
-            <X className="w-5 h-5" />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Cerrar modal"
+            className="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition cursor-pointer shrink-0"
+          >
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
-        <div className="p-6 space-y-6 max-h-[82vh] overflow-y-auto">
+        <div className="p-4 sm:p-6 space-y-6 overflow-y-auto flex-1">
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
               1. Datos Físicos (Mifflin-St Jeor)

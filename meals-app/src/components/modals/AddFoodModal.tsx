@@ -70,49 +70,59 @@ export const AddFoodModal: React.FC<AddFoodModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-slate-200 overflow-hidden my-8">
-        <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
-          <div>
-            <span className="text-xs uppercase tracking-wider text-emerald-400 font-bold">
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-start sm:items-center justify-center p-2 sm:p-4 overflow-y-auto"
+    >
+      <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl border border-slate-200 overflow-hidden my-auto max-h-[92dvh] sm:max-h-[88vh] flex flex-col">
+        <div className="px-4 py-3 sm:px-6 sm:py-4 bg-slate-900 text-white flex items-center justify-between shrink-0 sticky top-0 z-20">
+          <div className="min-w-0 pr-2">
+            <span className="text-[11px] sm:text-xs uppercase tracking-wider text-emerald-400 font-bold block truncate">
               Añadir a {mealLabel}
             </span>
-            <h3 className="font-bold text-lg flex items-center gap-2">
+            <h3 className="font-bold text-base sm:text-lg flex items-center gap-2 truncate">
               Buscador Conectado (OpenFoodFacts + Platos IA)
             </h3>
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-white p-1 rounded-lg">
-            <X className="w-5 h-5" />
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Cerrar modal"
+            className="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition cursor-pointer shrink-0"
+          >
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
-        <div className="flex border-b border-slate-200 bg-slate-50">
+        <div className="flex border-b border-slate-200 bg-slate-50 shrink-0">
           <button
             type="button"
             onClick={() => setIsCreatingCustomFood(false)}
-            className={`flex-1 py-3 text-xs sm:text-sm font-bold border-b-2 transition cursor-pointer ${
+            className={`flex-1 py-2.5 sm:py-3 px-2 text-xs sm:text-sm font-bold border-b-2 transition cursor-pointer text-center ${
               !isCreatingCustomFood
                 ? 'border-emerald-600 text-emerald-700 bg-white'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            Buscador en Tiempo Real (API + Mis Platos)
+            Buscador en Tiempo Real
           </button>
           <button
             type="button"
             onClick={() => setIsCreatingCustomFood(true)}
-            className={`flex-1 py-3 text-xs sm:text-sm font-bold border-b-2 transition cursor-pointer ${
+            className={`flex-1 py-2.5 sm:py-3 px-2 text-xs sm:text-sm font-bold border-b-2 transition cursor-pointer text-center ${
               isCreatingCustomFood
                 ? 'border-emerald-600 text-emerald-700 bg-white'
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            + Introducir Macros Manualmente
+            + Macros Manuales
           </button>
         </div>
 
         {!isCreatingCustomFood ? (
-          <div className="p-5 space-y-4">
+          <div className="p-3.5 sm:p-5 space-y-4 overflow-y-auto flex-1">
             {/* Input Buscador con indicador de conexión API Resiliente */}
             <div className="flex flex-col sm:flex-row gap-2">
               <div className="relative flex-1">
@@ -358,7 +368,7 @@ export const AddFoodModal: React.FC<AddFoodModalProps> = ({
             )}
           </div>
         ) : (
-          <form onSubmit={onCreateAndAddCustomFood} className="p-6 space-y-4">
+          <form onSubmit={onCreateAndAddCustomFood} className="p-4 sm:p-6 space-y-4 overflow-y-auto flex-1">
             <div>
               <label className="block text-xs font-bold uppercase text-slate-600 mb-1">
                 Nombre del Alimento o Plato *

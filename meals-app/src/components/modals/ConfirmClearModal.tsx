@@ -14,8 +14,13 @@ export const ConfirmClearModal: React.FC<ConfirmClearModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-slate-200 text-center space-y-4">
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto"
+    >
+      <div className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-slate-200 text-center space-y-4 my-auto">
         <h3 className="text-lg font-bold text-slate-900">¿Reiniciar el registro de hoy?</h3>
         <p className="text-xs text-slate-500">
           Se vaciarán las comidas de hoy, pero tus Platos Habituales IA y tu Menú Semanal se conservarán.
