@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
-import { ChefHat, BookOpen, AlertCircle, Loader2, Sparkles } from 'lucide-react';
-import type { FoodItem, UserProfile, MacroTargets } from '../../types/nutrition';
-import { HabitualDishCard } from './HabitualDishCard';
+import React, { useState } from "react";
+import {
+  ChefHat,
+  BookOpen,
+  AlertCircle,
+  Loader2,
+  Sparkles,
+} from "lucide-react";
+import type {
+  FoodItem,
+  UserProfile,
+  MacroTargets,
+} from "../../types/nutrition";
+import { HabitualDishCard } from "./HabitualDishCard";
 
 interface HabitualDishesTabProps {
   customFoods: FoodItem[];
@@ -11,7 +21,11 @@ interface HabitualDishesTabProps {
   aiAnalysisError: string | null;
   onAnalyzeDishes: (dishesInput: string) => Promise<void>;
   onDeleteDish: (dishId: string) => void;
-  onAddToMeal: (mealCategory: 'almuerzo' | 'cena', dish: FoodItem, grams: number) => void;
+  onAddToMeal: (
+    mealCategory: "almuerzo" | "cena",
+    dish: FoodItem,
+    grams: number,
+  ) => void;
 }
 
 export const HabitualDishesTab: React.FC<HabitualDishesTabProps> = ({
@@ -24,19 +38,19 @@ export const HabitualDishesTab: React.FC<HabitualDishesTabProps> = ({
   onDeleteDish,
   onAddToMeal,
 }) => {
-  const [dishesInput, setDishesInput] = useState('');
+  const [dishesInput, setDishesInput] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!dishesInput.trim()) return;
     await onAnalyzeDishes(dishesInput);
-    setDishesInput('');
+    setDishesInput("");
   };
 
   const sampleIdeas = [
-    'Bocadillo de tortilla francesa con jamón',
-    'Macarrones con carne picada y tomate',
-    'Cocido o puchero con garbanzos y pollo'
+    "Bocadillo de tortilla francesa con jamón",
+    "Macarrones con carne picada y tomate",
+    "Cocido o puchero con garbanzos y pollo",
   ];
 
   return (
@@ -51,7 +65,11 @@ export const HabitualDishesTab: React.FC<HabitualDishesTabProps> = ({
               Agente IA: Cuéntame qué platos sueles comer y cenar
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-              Escribe tus platos caseros habituales separados por comas. La IA calculará sus calorías por 100g, te dirá <strong>cuántos gramos exactos puedes servirte</strong> para tu meta de {targets.calories} kcal ({profile.weight} kg) y te dará un consejo para mejorar su perfil nutricional. Quedarán guardados permanentemente en tu listado.
+              Escribe tus platos caseros habituales separados por comas. La IA
+              calculará sus calorías por 100g, te dirá{" "}
+              <strong>cuántos gramos exactos puedes servirte</strong> para tu
+              meta de {targets.calories} kcal ({profile.weight} kg) y te dará un
+              consejo para mejorar su perfil nutricional.
             </p>
           </div>
         </div>
@@ -61,7 +79,7 @@ export const HabitualDishesTab: React.FC<HabitualDishesTabProps> = ({
             rows={3}
             value={dishesInput}
             onChange={(e) => setDishesInput(e.target.value)}
-            placeholder="Ejemplo: Macarrones con chorizo y tomate, bocadillo de lomo con queso, arroz caldoso con pollo, merluza rebozada con ensalada, tortilla de patatas..."
+            placeholder="Ejemplo: Macarrones con chorizo y tomate, bocadillo de lomo con queso, arroz caldoso con pollo..."
             className="w-full p-3.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 bg-slate-50 focus:bg-white"
           />
 
@@ -73,12 +91,18 @@ export const HabitualDishesTab: React.FC<HabitualDishesTabProps> = ({
 
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap gap-1.5">
-              <span className="text-xs text-slate-400 self-center mr-1">Ideas rápidas:</span>
+              <span className="text-xs text-slate-400 self-center mr-1">
+                Ideas rápidas:
+              </span>
               {sampleIdeas.map((sample, i) => (
                 <button
                   key={i}
                   type="button"
-                  onClick={() => setDishesInput(prev => prev ? `${prev}, ${sample}` : sample)}
+                  onClick={() =>
+                    setDishesInput((prev) =>
+                      prev ? `${prev}, ${sample}` : sample,
+                    )
+                  }
                   className="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-indigo-50 hover:text-indigo-700 text-slate-600 transition cursor-pointer"
                 >
                   + {sample}

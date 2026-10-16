@@ -61,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({
           }`}
         >
           <Utensils className="w-4 h-4" />
-          Calculadora y Registro Diario
+          Calculadora
         </button>
 
         <button
@@ -73,7 +73,7 @@ export const Header: React.FC<HeaderProps> = ({
           }`}
         >
           <ChefHat className="w-4 h-4" />
-          Mis Platos Habituales (Agente IA)
+          Mis Platos Habituales
           <span className="px-1.5 py-0.2 text-[10px] rounded-full bg-amber-300 text-slate-900 font-extrabold">
             {customFoodsCount}
           </span>
@@ -88,7 +88,7 @@ export const Header: React.FC<HeaderProps> = ({
           }`}
         >
           <Calendar className="w-4 h-4" />
-          Menú Semanal + Alternativas Económicas
+          Menú Semanal
         </button>
       </div>
     </header>
