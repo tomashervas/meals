@@ -1,12 +1,20 @@
-import React from 'react';
-import type { WeeklyDayPlan, WeeklyMealDish, AltMode, SelectedSlotForAlt } from '../../types/nutrition';
-import { WeeklyMealSlot } from './WeeklyMealSlot';
+import React from "react";
+import type {
+  WeeklyDayPlan,
+  WeeklyMealDish,
+  AltMode,
+  SelectedSlotForAlt,
+} from "../../types/nutrition";
+import { WeeklyMealSlot } from "./WeeklyMealSlot";
 
 interface WeeklyDayCardProps {
   dayPlan: WeeklyDayPlan;
   dayIndex: number;
   onFetchAlternatives: (slot: SelectedSlotForAlt, mode: AltMode) => void;
-  onSendMealToToday: (mealType: 'lunch' | 'dinner', dish: WeeklyMealDish) => void;
+  onSendMealToToday: (
+    mealType: "lunch" | "dinner",
+    dish: WeeklyMealDish,
+  ) => void;
 }
 
 export const WeeklyDayCard: React.FC<WeeklyDayCardProps> = ({
@@ -20,12 +28,13 @@ export const WeeklyDayCard: React.FC<WeeklyDayCardProps> = ({
 
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-      <div className="px-5 py-3 bg-slate-900 text-white flex items-center justify-between">
+      <div className="px-5 py-3 bg-slate-900 text-white flex items-center justify-between space-x-4">
         <span className="font-extrabold text-sm tracking-wide uppercase text-emerald-400">
           {dayPlan.day}
         </span>
         <span className="text-xs text-slate-300">
-          Comida + Cena: <strong>{totalCalories} kcal</strong> • <strong>{totalProtein}g P</strong> (Resto en Desayuno/Merienda)
+          Comida + Cena: <strong>{totalCalories} kcal</strong> •{" "}
+          <strong>{totalProtein}g P</strong> (Resto en Desayuno/Merienda)
         </span>
       </div>
 

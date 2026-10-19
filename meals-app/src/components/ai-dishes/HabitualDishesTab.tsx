@@ -47,12 +47,6 @@ export const HabitualDishesTab: React.FC<HabitualDishesTabProps> = ({
     setDishesInput("");
   };
 
-  const sampleIdeas = [
-    "Bocadillo de tortilla francesa con jamón",
-    "Macarrones con carne picada y tomate",
-    "Cocido o puchero con garbanzos y pollo",
-  ];
-
   return (
     <section className="space-y-6">
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-indigo-200/80">
@@ -90,26 +84,6 @@ export const HabitualDishesTab: React.FC<HabitualDishesTabProps> = ({
           )}
 
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-wrap gap-1.5">
-              <span className="text-xs text-slate-400 self-center mr-1">
-                Ideas rápidas:
-              </span>
-              {sampleIdeas.map((sample, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() =>
-                    setDishesInput((prev) =>
-                      prev ? `${prev}, ${sample}` : sample,
-                    )
-                  }
-                  className="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-indigo-50 hover:text-indigo-700 text-slate-600 transition cursor-pointer"
-                >
-                  + {sample}
-                </button>
-              ))}
-            </div>
-
             <button
               type="submit"
               disabled={isAnalyzingDishes || !dishesInput.trim()}

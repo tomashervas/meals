@@ -515,7 +515,6 @@ export default function App() {
       almuerzo: [],
       merienda: [],
       cena: [],
-      snacks: [],
     });
     setConfirmClearModal(false);
     showToast("Registro del día reiniciado en blanco");

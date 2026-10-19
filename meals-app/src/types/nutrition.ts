@@ -1,8 +1,8 @@
-import type { LucideIcon } from 'lucide-react';
+import type { LucideIcon } from "lucide-react";
 
-export type Sex = 'male' | 'female';
-export type MacroMethod = 'g_per_kg' | 'percentage';
-export type GoalId = 'lose' | 'recomp' | 'maintain' | 'gain';
+export type Sex = "male" | "female";
+export type MacroMethod = "g_per_kg" | "percentage";
+export type GoalId = "lose" | "recomp" | "maintain" | "gain";
 
 export interface UserProfile {
   sex: Sex;
@@ -58,7 +58,6 @@ export interface DailyMeals {
   almuerzo: MealItem[];
   merienda: MealItem[];
   cena: MealItem[];
-  snacks: MealItem[];
   [key: string]: MealItem[];
 }
 
@@ -113,15 +112,15 @@ export interface AlternativeDish {
 
 export interface SelectedSlotForAlt {
   dayIndex: number;
-  mealType: 'lunch' | 'dinner';
+  mealType: "lunch" | "dinner";
   dish: WeeklyMealDish;
 }
 
-export type ActiveTab = 'tracker' | 'ai-dishes' | 'weekly-menu';
+export type ActiveTab = "tracker" | "ai-dishes" | "weekly-menu";
 
-export type SearchEngineSource = 'local' | 'openfoodfacts' | 'ai_fallback';
+export type SearchEngineSource = "local" | "openfoodfacts" | "ai_fallback";
 
-export type AltMode = 'equivalent' | 'budget';
+export type AltMode = "equivalent" | "budget";
 
 export interface CustomFoodFormData {
   name: string;
